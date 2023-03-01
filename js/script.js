@@ -26,10 +26,24 @@ var TimeZones = [
     "Africa/Cairo",
   ];
   
- 
+  let tableStr = ''
   TimeZones.forEach((timeZone) => {
     let strTime = newtime.toLocaleString("en-US", { timeZone: `${timeZone}` });
+
     console.log(timeZone, strTime);
+
+
+  tableStr += `
+        <tr>
+            <td> ${timeZone} </td>
+            <td> ${strTime} </td>
+        </tr>            
+        ` 
   });
 
+  let tableBox = document.getElementById("time-table");
+  let tabBody = document.createElement("tbody");
+  tabBody.setAttribute("id","tbody-in");
+  tabBody.innerHTML=tableStr;
+  tableBox.append(tabBody);
 }
